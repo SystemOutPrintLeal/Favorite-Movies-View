@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 
 export const Container = styled.div`
@@ -88,22 +89,18 @@ export const Movie = styled.div`
         border-radius: 8px 0 0 8px;
         transform: scale(1) translateX(-100px);
       }
-      &:last-child > div {
-        top: 0;
-        left: 10px;
-        z-index: 10;
-        width: 300px;
-        height: 300px;
-        transform: scale(1) translateX(-260px);
-        opacity: 1;
-        border-radius: 8px 0 0 8px;
-      }
 
-      &:last-child > img {
-        border-radius:  0 8px 8px 0;
-        transform: scale(1) translateX(50px);
-      }
     }
+    ${media.lessThan('medium')`
+      width: 150px;
+      &:hover {
+        img {
+          border-radius: 0px;
+          transform: scale(1);
+        }
+      }
+    `}
+
 `
 
 export const MovieCard = styled.div`
@@ -129,6 +126,10 @@ export const MovieCard = styled.div`
     text-align: center;
     margin-bottom: 5px;
   }
+
+  ${media.lessThan('medium')`
+    display: none;
+  `}
 `
 
 export const Infos = styled.div`
@@ -138,9 +139,9 @@ export const Infos = styled.div`
   margin-top: 15px;
   margin-bottom: 10px;
 
-
   span {
     font-size: 20px;
+
     & + span {
       margin-left: 20px;
     }
@@ -151,12 +152,18 @@ export const Infos = styled.div`
   }
 `
 
-
 export const ButtonLetf = styled.button`
   left: 0;
 `
 export const ButtonRight = styled.button`
   right: 0;
 `
+export const relevances = {
+  low: "#FF0000",
+  mediumLow: "yellow",
+  medium: "orange",
+  hight: "#46d369"
 
-export default {Container, Wrapper, Movie, MovieCard, Infos, ButtonLetf, ButtonRight}
+}
+
+export default {Container, Wrapper, Movie, MovieCard, Infos, ButtonLetf, ButtonRight, relevances}

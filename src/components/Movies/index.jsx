@@ -6,7 +6,8 @@ import {
     Wrapper, 
     Movie,
     MovieCard,
-    Infos
+    Infos, 
+    relevances
     } from './style'
 import {
     FaChevronLeft,
@@ -18,7 +19,21 @@ export default function Movies({movies}){
 
     const [marginContent, setMarginContent] = useState(0);
 
-    const MAX_WIDTH_CONTENT = useMemo(() => movies.length * 224, [movies]);
+    var hightScreen = window.screen.height;
+    var widthScreen = window.screen.width;
+
+    const MAX_WIDTH_CONTENT = useMemo(() => movies.length * (widthScreen/6), [movies]);
+
+    const relevanceColor = (relevance) => {
+        if(relevance <= 25) 
+            return relevances["low"]; 
+        else if(relevance <= 50) 
+            return relevances["mediumLow"]; 
+        else if(relevance <= 75) 
+            return relevances["medium"]; 
+        else if(relevance <= 100) 
+            return relevances["hight"]; 
+    }
 
     const handleScroll = useCallback(
         direction => {
@@ -48,12 +63,13 @@ export default function Movies({movies}){
                         <MovieCard>
                             <strong>{movie.name}</strong>
                             <Infos>
-                                <span> {movie.relevance}% relevante</span>
+                                <span style={{color: relevanceColor(movie.relevance)}}> {movie.relevance}% relevante</span>
                                 <span> {movie.release.year} </span>
                                 <span> {movie.country} </span>
                             </Infos>
-                            <Infos>
-                                <span style={{color: "#FFF"}}> Dirigido por: {movie.director} </span>
+                            <Infos style={{flexDirection: "column"}}>
+                                <span style={{color: "#FFF"}}> Dirigido por: </span>
+                                <span style={{color: "#FFF"}}> {movie.director} </span>
                             </Infos>
                         </MovieCard>
                     
