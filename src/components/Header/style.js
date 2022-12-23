@@ -7,7 +7,6 @@ export const Container = styled.header`
 
     width: 100%;
     padding: 20px 0;
-    position: fixed;
 
     background: #000;
     transition: background 0.8s;

@@ -9,6 +9,7 @@ export default function Header(){
                 <ul>
                     <li>Inicio</li>
                     <li>Filmes</li>
+                    <li>Séries</li>
                     <li style={{ fontWeight: 'bold' }}>Favoritos</li>
                     <li>Novidades</li>
                 </ul>
