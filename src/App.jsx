@@ -1,9 +1,12 @@
-import './App.css';
 import FavoriteMovies from './pages/FavoriteMovies';
+import {GlobalStyle} from './globalStyle'
 
 function App() {
   return (
-    <FavoriteMovies/>
+    <>
+      <GlobalStyle/>
+      <FavoriteMovies/>
+    </>
   );
 }
 
