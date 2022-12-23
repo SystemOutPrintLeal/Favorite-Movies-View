@@ -15,6 +15,12 @@ export const Items = styled.div`
     display: flex;
     align-items: center;
 
+    img {
+        width: auto;
+        height: 65px;
+        margin-left: 30px;
+      }
+
     ul{
         list-style: none;
         display: flex;
