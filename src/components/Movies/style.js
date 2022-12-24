@@ -11,14 +11,7 @@ export const Container = styled.div`
     overflow-x: hidden;
     overflow-y: hidden;
 
-    h1 {
-        z-index: 7;
-        svg {
-          width: 25px;
-          height: 25px;
-          color: #ff0000;
-        }
-      }
+
 
       > button {
         position: absolute;
@@ -51,6 +44,49 @@ export const Container = styled.div`
           visibility: visible;
         }
       }
+`
+
+export const HeaderMovies = styled.div`
+      display: flex;
+      justify-content: space-between;
+      z-index: 7;
+      h1 {
+        svg {
+          width: 25px;
+          height: 25px;
+          color: #FF6600;
+        }
+      };
+      
+`
+
+export const Filter = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  
+  span{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-input{
+    text-align: center;
+    box-sizing: border-box;
+    width: 300px;
+    margin-top: 7px;
+    padding: 0 20px 0 20px;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #444;
+    color: #ffffff;
+  }
+
 `
 
 export const Wrapper = styled.div`
@@ -166,4 +202,16 @@ export const relevances = {
 
 }
 
-export default {Container, Wrapper, Movie, MovieCard, Infos, ButtonLetf, ButtonRight, relevances}
+export default {
+    Container,
+    Wrapper, 
+    Movie, 
+    MovieCard, 
+    Infos, 
+    ButtonLetf, 
+    ButtonRight, 
+    relevances,
+    HeaderMovies,
+    Filter,
+    
+  }

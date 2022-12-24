@@ -1,4 +1,6 @@
 import React,{useState, useMemo, useCallback} from 'react'
+import favoriteMovies from '../../services/movies'
+import Checkbox from '../Checkbox'
 import { 
     Container, 
     ButtonLetf,
@@ -7,7 +9,9 @@ import {
     Movie,
     MovieCard,
     Infos, 
-    relevances
+    relevances,
+    HeaderMovies,
+    Filter,
     } from './style'
 import {
     FaChevronLeft,
@@ -15,11 +19,11 @@ import {
     FaHeart
     } from 'react-icons/fa';
 
-export default function Movies({movies}){
+export default function Movies(){
 
     const [marginContent, setMarginContent] = useState(0);
+    const [movies, setMovies] = useState(favoriteMovies)
 
-    var hightScreen = window.screen.height;
     var widthScreen = window.screen.width;
 
     const MAX_WIDTH_CONTENT = useMemo(() => movies.length * (widthScreen/6), [movies]);
@@ -34,6 +38,12 @@ export default function Movies({movies}){
         else if(relevance <= 100) 
             return relevances["hight"]; 
     }
+
+    const handleInput = (event) => {
+        console.log(event.target.value)
+    }
+
+    
 
     const handleScroll = useCallback(
         direction => {
@@ -51,7 +61,20 @@ export default function Movies({movies}){
 
     return(
         <Container>
-            <h1>Favoritos <FaHeart/></h1>
+            <HeaderMovies>
+                <h1>Favoritos <FaHeart/></h1>
+                <Filter >
+                    <span>
+                        <Checkbox text="Nome"/>
+                        <Checkbox text="Lançamento"/>
+                        <Checkbox text="País"/>
+                    </span>
+
+                    <input className='text-input' onChange={handleInput}/>
+                </Filter>
+                
+            </HeaderMovies>
+
             <ButtonLetf type="button" onClick={() => handleScroll('right')}>
                 <FaChevronLeft />
             </ButtonLetf>

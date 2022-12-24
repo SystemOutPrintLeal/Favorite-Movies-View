@@ -13,7 +13,7 @@ export default function Header(){
                     <li>Inicio</li>
                     <li>Filmes</li>
                     <li>Séries</li>
-                    <li style={{ fontWeight: 'bold' }}>Favoritos</li>
+                    <li style={{ fontWeight: 'bold', color:"#FF6600", fontSize: "22px" }}>Favoritos</li>
                     <li>Novidades</li>
                 </ul>
             </Items>

@@ -12,10 +12,20 @@ body {
   color: #FFF;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body, input, button, a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
+
+h1, h2, h3, h4, h5, h6, strong {
+  color: #FFF;
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+  color: #FFF;
+}
+
 
 `
 
