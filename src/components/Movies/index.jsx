@@ -25,7 +25,7 @@ export default function Movies(){
     const [movies, setMovies] = useState(favoriteMovies)
     const [filter, setFilter] = useState("Nome")
     const [input, setInput] = useState("")
-    const [nameCheckbox, setNameCheckbox] = useState(false)
+    const [nameCheckbox, setNameCheckbox] = useState(true)
     const [releaseCheckbox, setReleaseCheckbox] = useState(false)
     const [countryCheckbox, setCountryCheckbox] = useState(false)
 
@@ -67,6 +67,9 @@ export default function Movies(){
             )
         }
     }
+
+    useEffect(()=>{movies.sort(sortByName)},[])
+
     useEffect(()=>{
         filterTypes[filter](input)
     },[input])
@@ -75,19 +78,52 @@ export default function Movies(){
         setInput(event.target.value)
     }
 
+    const sortByName = (a,b) => {
+        if (a.name > b.name) {
+            return 1;
+        }
+        if (a.name < b.name) {
+            return -1;
+        }
+            return 0;
+    }
+    
+    const sortByRelease = (a,b) => {
+        if (a.release.year < b.release.year) {
+            return 1;
+        }
+        if (a.release.year > b.release.year) {
+            return -1;
+        }
+            return 0;
+    }
+
+    const sortByCountry = (a,b) => {
+        if (a.country > b.country) {
+            return 1;
+        }
+        if (a.country < b.country) {
+            return -1;
+        }
+            return 0;
+    }
+
     const handleCheck = (event) => {
         if(event === "Nome"){
             setFilter("Nome")
+            movies.sort(sortByName)
             setReleaseCheckbox(false)
             setCountryCheckbox(false)
         }
         else if(event === "Lançamento"){
             setFilter("Lançamento")
+            movies.sort(sortByRelease)
             setNameCheckbox(false)
             setCountryCheckbox(false)
         }
         else{
             setFilter("País")
+            movies.sort(sortByCountry)
             setNameCheckbox(false)
             setReleaseCheckbox(false)
         }

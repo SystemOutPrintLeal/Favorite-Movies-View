@@ -9,8 +9,8 @@ import {
 export default function Checkbox({checked, setChecked, text, handleCheck})
 {
     function handleCheckboxChange(){
-        handleCheck(text)
         setChecked(!checked);
+        handleCheck(text)
      }
 
     return(

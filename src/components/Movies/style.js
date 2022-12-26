@@ -125,6 +125,22 @@ export const Movie = styled.div`
         border-radius: 8px 0 0 8px;
         transform: scale(1) translateX(-100px);
       }
+      
+      &:last-child > div {
+        top: 0;
+        left: 10px;
+        z-index: 10;
+        width: 300px;
+        height: 300px;
+        transform: scale(1) translateX(-260px);
+        opacity: 1;
+        border-radius: 8px 0 0 8px;
+      }
+
+      &:last-child > img {
+        border-radius:  0 8px 8px 0;
+        transform: scale(1) translateX(50px);
+      }
 
     }
     ${media.lessThan('medium')`
