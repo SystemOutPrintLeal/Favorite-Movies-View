@@ -6,9 +6,10 @@ import {
     Text
 } from './style'
 
-export default function Checkbox({checked, setChecked, text})
+export default function Checkbox({checked, setChecked, text, handleCheck})
 {
     function handleCheckboxChange(){
+        handleCheck(text)
         setChecked(!checked);
      }
 

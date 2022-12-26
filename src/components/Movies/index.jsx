@@ -1,4 +1,4 @@
-import React,{useState, useMemo, useCallback} from 'react'
+import React,{useState, useMemo, useCallback, useEffect} from 'react'
 import favoriteMovies from '../../services/movies'
 import Checkbox from '../Checkbox'
 import { 
@@ -23,6 +23,11 @@ export default function Movies(){
 
     const [marginContent, setMarginContent] = useState(0);
     const [movies, setMovies] = useState(favoriteMovies)
+    const [filter, setFilter] = useState("Nome")
+    const [input, setInput] = useState("")
+    const [nameCheckbox, setNameCheckbox] = useState(false)
+    const [releaseCheckbox, setReleaseCheckbox] = useState(false)
+    const [countryCheckbox, setCountryCheckbox] = useState(false)
 
     var widthScreen = window.screen.width;
 
@@ -39,19 +44,61 @@ export default function Movies(){
             return relevances["hight"]; 
     }
 
+    const filterTypes = {
+        Nome :function(event){
+            setMovies(
+                favoriteMovies.filter(movies => (
+                   movies.name.toLowerCase().includes(event.toLowerCase())
+                ))
+            )
+        },
+        Lançamento :function(event){
+            setMovies(
+                favoriteMovies.filter(movies => (
+                   movies.release.year.toString().includes(event.toLowerCase())
+                ))
+            )
+        },
+        País :function(event){
+            setMovies(
+                favoriteMovies.filter(movies => (
+                   movies.country.toLowerCase().includes(event.toLowerCase())
+                ))
+            )
+        }
+    }
+    useEffect(()=>{
+        filterTypes[filter](input)
+    },[input])
+
     const handleInput = (event) => {
-        console.log(event.target.value)
+        setInput(event.target.value)
     }
 
-    
+    const handleCheck = (event) => {
+        if(event === "Nome"){
+            setFilter("Nome")
+            setReleaseCheckbox(false)
+            setCountryCheckbox(false)
+        }
+        else if(event === "Lançamento"){
+            setFilter("Lançamento")
+            setNameCheckbox(false)
+            setCountryCheckbox(false)
+        }
+        else{
+            setFilter("País")
+            setNameCheckbox(false)
+            setReleaseCheckbox(false)
+        }
+    }
 
     const handleScroll = useCallback(
         direction => {
           setMarginContent(stateMargin => {
             const newValue = stateMargin + (direction === 'left' ? -400 : 400);
     
-            const isError =
-              MAX_WIDTH_CONTENT + newValue < window.innerWidth || newValue === 400;
+            const isError = MAX_WIDTH_CONTENT + newValue < window.innerWidth || newValue === 400;
     
             return isError ? stateMargin : newValue;
           });
@@ -64,10 +111,11 @@ export default function Movies(){
             <HeaderMovies>
                 <h1>Favoritos <FaHeart/></h1>
                 <Filter >
+                    <span>Filtrar por </span>
                     <span>
-                        <Checkbox text="Nome"/>
-                        <Checkbox text="Lançamento"/>
-                        <Checkbox text="País"/>
+                        <Checkbox checked={nameCheckbox} setChecked={setNameCheckbox} text="Nome" handleCheck={handleCheck}/>
+                        <Checkbox checked={releaseCheckbox} setChecked={setReleaseCheckbox} text="Lançamento" handleCheck={handleCheck}/>
+                        <Checkbox checked={countryCheckbox} setChecked={setCountryCheckbox} text="País" handleCheck={handleCheck}/>
                     </span>
 
                     <input className='text-input' onChange={handleInput}/>

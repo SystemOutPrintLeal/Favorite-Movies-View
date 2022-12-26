@@ -14,7 +14,7 @@ export const MyFavoriteMovies = [
      {
         name: 'Avatar: O caminho das aguas',
         director: 'James Cameron',
-        country: 'Brasil',
+        country: 'EUA',
         relevance: 81,
         release: {
             day: 15,
@@ -50,7 +50,7 @@ export const MyFavoriteMovies = [
      {
         name: 'Pantera Negra: Wakanda para Sempre ',
         director: 'Ryan Coogler',
-        country: 'Brasil',
+        country: 'Wakanda',
         relevance: 67,
         release: {
             day: 10,
@@ -74,7 +74,7 @@ export const MyFavoriteMovies = [
      {
         name: 'Gemini: O Planeta Sombrio ',
         director: 'Serik Beyseu',
-        country: 'Brasil',
+        country: 'Jupiter',
         relevance: 56,
         release: {
             day: 5,
@@ -110,7 +110,7 @@ export const MyFavoriteMovies = [
      {
         name: 'O grinch',
         director: 'Ron Howard',
-        country: 'Brasil',
+        country: 'Polo Norte',
         relevance: 67,
         release: {
             day: 8,

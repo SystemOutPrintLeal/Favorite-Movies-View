@@ -7,7 +7,7 @@ export default function FavoriteMovies(){
     return (
         <>
             <Header/>
-            <Movies />
+            <Movies/>
         </>
     )
 }
