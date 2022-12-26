@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Container,
     HiddenCheckbox,
-    StyledCheckbox,
     Text
 } from './style'
 

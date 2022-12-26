@@ -11,8 +11,6 @@ export const Container = styled.div`
     overflow-x: hidden;
     overflow-y: hidden;
 
-
-
       > button {
         position: absolute;
         display: flex;
@@ -57,18 +55,17 @@ export const HeaderMovies = styled.div`
           color: #FF6600;
         }
       };
-      
 `
 
 export const Filter = styled.div`
   display: flex;
   flex-direction: column;
-
   
   span{
     display: flex;
     flex-direction: row;
     margin-left: 10px;
+    margin-bottom: 5px;
     align-items: center;
     justify-content: center;
   }
@@ -78,7 +75,7 @@ export const Filter = styled.div`
     width: 300px;
     margin-top: 7px;
     padding: 0 20px 0 20px;
-    height: 40px;
+    height: 35px;
     font-size: 18px;
     border: none;
     border-radius: 5px;
@@ -86,7 +83,6 @@ export const Filter = styled.div`
     background-color: #444;
     color: #ffffff;
   }
-
 `
 
 export const Wrapper = styled.div`
@@ -152,7 +148,6 @@ export const Movie = styled.div`
         }
       }
     `}
-
 `
 
 export const MovieCard = styled.div`
@@ -229,5 +224,4 @@ export default {
     relevances,
     HeaderMovies,
     Filter,
-    
   }

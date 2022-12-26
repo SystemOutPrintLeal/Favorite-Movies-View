@@ -17,7 +17,6 @@ export const Container = styled.div`
     input:checked{
         background-color: #FF6600;
       }
-
 `
 
 export const HiddenCheckbox = styled.input.attrs({type: 'checkbox'})`
@@ -30,8 +29,6 @@ export const Text = styled.label`
     )}
 `
 
-export const StyledCheckbox = styled.label`
 
-`
 
-export default {Container, HiddenCheckbox, Text, StyledCheckbox}
+export default {Container, HiddenCheckbox, Text}
